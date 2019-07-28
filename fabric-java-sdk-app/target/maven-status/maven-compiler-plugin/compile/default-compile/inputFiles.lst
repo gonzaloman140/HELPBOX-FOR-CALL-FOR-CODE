@@ -1,0 +1,16 @@
+/home/gonzalo/cfc-salto-201906-ngo-collaboration-using-blockchain-master/fabric-java-sdk-app/src/main/java/org/example/config/ConfigNetwork.java
+/home/gonzalo/cfc-salto-201906-ngo-collaboration-using-blockchain-master/fabric-java-sdk-app/src/main/java/org/example/user/UserContext.java
+/home/gonzalo/cfc-salto-201906-ngo-collaboration-using-blockchain-master/fabric-java-sdk-app/src/main/java/org/example/servlet/QueryNeedServlet.java
+/home/gonzalo/cfc-salto-201906-ngo-collaboration-using-blockchain-master/fabric-java-sdk-app/src/main/java/org/example/user/RegisterEnrollUser.java
+/home/gonzalo/cfc-salto-201906-ngo-collaboration-using-blockchain-master/fabric-java-sdk-app/src/main/java/org/example/servlet/CreatePledgeServlet.java
+/home/gonzalo/cfc-salto-201906-ngo-collaboration-using-blockchain-master/fabric-java-sdk-app/src/main/java/org/example/client/CAClient.java
+/home/gonzalo/cfc-salto-201906-ngo-collaboration-using-blockchain-master/fabric-java-sdk-app/src/main/java/org/example/client/FabricClient.java
+/home/gonzalo/cfc-salto-201906-ngo-collaboration-using-blockchain-master/fabric-java-sdk-app/src/main/java/org/example/servlet/QueryAllPastNeedsServlet.java
+/home/gonzalo/cfc-salto-201906-ngo-collaboration-using-blockchain-master/fabric-java-sdk-app/src/main/java/org/example/servlet/QueryPledgeServlet.java
+/home/gonzalo/cfc-salto-201906-ngo-collaboration-using-blockchain-master/fabric-java-sdk-app/src/main/java/org/example/user/CAEnrollment.java
+/home/gonzalo/cfc-salto-201906-ngo-collaboration-using-blockchain-master/fabric-java-sdk-app/src/main/java/org/example/servlet/QueryAllActiveNeedsServlet.java
+/home/gonzalo/cfc-salto-201906-ngo-collaboration-using-blockchain-master/fabric-java-sdk-app/src/main/java/org/example/servlet/QueryAllPledgesForNeedServlet.java
+/home/gonzalo/cfc-salto-201906-ngo-collaboration-using-blockchain-master/fabric-java-sdk-app/src/main/java/org/example/util/Util.java
+/home/gonzalo/cfc-salto-201906-ngo-collaboration-using-blockchain-master/fabric-java-sdk-app/src/main/java/org/example/client/ChannelClient.java
+/home/gonzalo/cfc-salto-201906-ngo-collaboration-using-blockchain-master/fabric-java-sdk-app/src/main/java/org/example/servlet/QueryAllNeedsServlet.java
+/home/gonzalo/cfc-salto-201906-ngo-collaboration-using-blockchain-master/fabric-java-sdk-app/src/main/java/org/example/servlet/CreateNeedServlet.java

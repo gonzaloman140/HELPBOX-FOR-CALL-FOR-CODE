@@ -1,0 +1,8 @@
+ applications:
+  - name: ngo-collaboration-java-app
+    random-route: true
+    memory: 256M
+    path: target/ngo-collaboration-java.war
+    buildpack: liberty-for-java
+    env:
+      KUBERNETES_IP_ADDRESS: 184.172.236.208

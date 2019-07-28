@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Create</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+
+
+  <!-- Favicons -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous">
+  <link rel="stylesheet" href="./stylesheets/style.css">
+
+
+  <link href="img/favicon.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+    Theme Name: Regna
+    Theme URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
+</head>
+
+<script>
+    var username = getUsername();
+    var selected_val;
+
+    $(document).ready(function () {
+        $("#save").click(function (e) {
+            var quantity = $("#quantity").val();
+            var selected_val = $("#cat_select option:selected").val();
+            var date_fulfil = $("#dateofff").val();
+
+            window.location = "../createneed?username=" + username + "&item=" + selected_val + "&qty=" + quantity + "&end_date=" + date_fulfil;
+        });
+        $("#back_to_home_page").click(function (e) {
+            window.location = "../menu?username=" + username;
+        });
+    });
+    function getUsername() {
+            var params = window.location.search.substring(1).split("&");
+            for (var i = 0; i < params.length; i++) {
+                var pair = params[i].split('=');
+                if (pair[0] === 'username' || pair[0] === 'uname' || pair[0] === 'ngo') {
+                    return pair[1];
+                }
+            }
+            return null;
+        }
+</script>
+
+<body>
+
+  <!--==========================
+  Header
+  ============================-->
+
+
+  <!--==========================
+    Hero Section
+  ============================-->
+  <section id="hero">
+    <div class="hero-container">
+
+
+          <h1>Create a New Need</h1>
+
+
+      <div class="newNeedForm">
+          <form id="form_id" method="post" name="myform">
+              <table class="needTable" style="border-spacing: 2cm">
+                      <tr>
+                          <td style="text-align:right" class= "text-white">
+                              Category
+                          </td>
+                          <td>
+                              <select id="cat_select" style="width: 100%">
+                                  <option value="Food">Food</option>
+                                  <option value="Clothes">Clothes</option>
+                                  <option value="tractor">Books</option>
+                                  <option value="Blankets">Blankets</option>
+                                  <option value="Other">Other</option>
+                              </select>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td style="text-align: right" class= "text-white">
+                              Required Quantity
+                          </td>
+                          <td>
+                              <input type="text" name="Quantity" id="quantity" />
+                          </td>
+                      </tr>
+                      <tr>
+                          <td style="text-align: left" class= "text-white">
+                              Expected date of fulfillment
+                          </td>
+                          <td>
+                              <input type="text" name="dateofff" id="dateofff" />
+                          </td>
+                      </tr>
+              </table>
+              <br/><br/>
+              <table style="width: 70%;">
+                      <tr>
+                          <td style="text-align: left">
+                              <input style="text-align: left" type="button" class="btn btn-outline-light" value="Back to Home Page" id="back_to_home_page" />
+                          </td>
+                          <td>
+                              <input style="text-align: right" type="button" class="btn btn-outline-warning" value="Save" id="save" />
+                          </td>
+                      </tr>
+              </table>
+          </form>
+      </div>
+
+      <br>
+      <script>
+          var res = '<%=result%>';
+          if( res != 'Create Need' ){
+              alert(res);
+          }
+      </script>
+
+  </body>
+
+    </div>
+  </section><!-- #hero -->
+
+  <main id="main">
+
+    <!--==========================
+      About Us Section
+    ============================-->
+
+
+  <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>TIMDUR</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!--
+          All the links in the footer should remain intact.
+          You can delete the links only if you purchased the pro version.
+          Licensing information: https://bootstrapmade.com/license/
+          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Regna
+        -->
+        Designed by <a href="https://bootstrapmade.com/">JB</a>
+      </div>
+    </div>
+  </footer><!-- #footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- JavaScript Libraries -->
+
+
+
+
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/wow/wow.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/counterup/counterup.min.js"></script>
+  <script src="lib/superfish/hoverIntent.js"></script>
+  <script src="lib/superfish/superfish.min.js"></script>
+
+  <!-- Contact Form JavaScript File -->
+  <script src="contactform/contactform.js"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>

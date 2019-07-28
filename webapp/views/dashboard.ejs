@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Active needs</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+
+
+
+  <!-- Favicons -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous">
+  <link rel="stylesheet" href="./stylesheets/style.css">
+
+
+  <link href="img/favicon.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+    Theme Name: Regna
+    Theme URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
+</head>
+
+<script>
+    var data = {};
+    var username = getUsername(window.location);
+
+    $(document).ready(function () {
+        $("td").click(function (e) {
+            var needid = $(e.target).attr("needid");
+            if (needid) {
+                var qty = prompt("Please provide the quantity you would like to pledge ", "");
+                if (qty != null && qty != 'null') {
+                    data["needId"] = needid;
+                    data["qty"] = qty;
+                    data["status"] = "Pledged";
+                    data["ngo"] = username;
+
+                    window.location = "../dashboard?ngo=" + username + "&needId=" + needid + "&qty=" + qty;
+                }
+            } else {
+                var needid = $(this).closest('tr').find('td:eq(0)').text().trim();
+                var createdby = $(this).closest('tr').find('td:eq(1)').text().trim();
+                var requiredqty = $(this).closest('tr').find('td:eq(4)').text().trim();
+                // open a new page with need details
+                window.location = "../needdetails?username=" + username + "&needid=" + needid + "&createdby=" + createdby + "&requiredqty=" + requiredqty;
+            }
+        });
+
+        $("#back_to_home_page").click(function (e) {
+            window.location = "../menu?username=" + username;
+        });
+    });
+
+    function getUsername() {
+        var params = window.location.search.substring(1).split("&");
+
+        for (var i = 0; i < params.length; i++) {
+            var pair = params[i].split('=');
+            if (pair[0] === 'username' || pair[0] === 'uname' || pair[0] === 'ngo') {
+                return pair[1];
+            }
+        }
+        return null;
+    }
+</script>
+
+<body>
+
+
+
+  <!--==========================
+  Header
+  ============================-->
+
+
+  <!--==========================
+    Hero Section
+  ============================-->
+  <section id="hero">
+
+
+
+    <div class="hero-container">
+
+
+
+      <div id="logo" class="pull-left">
+        <a href="#hero"><img src="img/solidad.png" alt="" title="" /></img></a>
+        <!-- Uncomment below if you prefer to use a text logo -->
+        <!--<h1><a href="#hero">Regna</a></h1>-->
+      </div>
+
+
+
+
+
+
+          <h1>Active needs</h1>
+
+
+        <div>
+            <% if( isData ){ %>
+                <table id="dashtable" data-role="table" border="1" class="table table-hover table-dark">
+                    <thead>
+                        <tr>
+                            <th>Need ID</th>
+                            <th>Created By</th>
+                            <th>Created On</th>
+                            <th>Category</th>
+                            <th>Quanity Required</th>
+                            <th>Pledged Qty</th>
+                            <th>Expected Date of Fullfillment</th>
+                            <th>Pledge</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (var i=0; i<needs.length; i++){ %>
+                            <tr>
+                                <td>
+                                    <%= needs[i].need_id %>
+                                </td>
+                                <td>
+                                    <%= needs[i].created_by %>
+                                </td>
+                                <td>
+                                    <%= needs[i].created_date %>
+                                </td>
+                                <td>
+                                    <%= needs[i].need_category %>
+                                </td>
+                                <td>
+                                    <%= needs[i].quantity %>
+                                </td>
+                                <td>
+                                    <%= needs[i].pledged %>
+                                </td>
+                                <td>
+                                    <%= needs[i].expected_fulfilment_date %>
+                                </td>
+                                <td>
+                                    <input type="button" value="Pledge" id="pledge" class="pledgeButton" needid=<%=needs[i].need_id %> />
+                                </td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
+                <div class="note">
+                    <h4><p class="text-white">Click on a row to get more details for a need</p></h4>
+                </div>
+                <% }
+            else{
+                %>
+                    <h4><p class="text-white">No active needs available</p></h4>
+                    <%
+            }
+             %>
+                        <br/>
+                        <div style="width: 100%; text-align: center">
+                            <input type="button" class="btn btn-outline-light" value="Back to Home Page" id="back_to_home_page" />
+                        </div>
+
+        </div>
+        <script>
+            var result = '<%=pledgeStatus%>';
+            if (result && result.length > 0) {
+                alert('<%=pledgeStatus%>');
+                result = '';
+            }
+        </script>
+
+        </body>
+
+      </div>
+    </div>
+  </section><!-- #hero -->
+
+  <main id="main">
+
+    <!--==========================
+      About Us Section
+    ============================-->
+
+
+  <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>TIMDUR</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!--
+          All the links in the footer should remain intact.
+          You can delete the links only if you purchased the pro version.
+          Licensing information: https://bootstrapmade.com/license/
+          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Regna
+        -->
+        Designed by <a href="https://bootstrapmade.com/">JB</a>
+      </div>
+    </div>
+  </footer><!-- #footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- JavaScript Libraries -->
+
+
+
+
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/wow/wow.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/counterup/counterup.min.js"></script>
+  <script src="lib/superfish/hoverIntent.js"></script>
+  <script src="lib/superfish/superfish.min.js"></script>
+
+  <!-- Contact Form JavaScript File -->
+  <script src="contactform/contactform.js"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>
